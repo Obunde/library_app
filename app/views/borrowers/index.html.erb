@@ -1,0 +1,14 @@
+<h1>Borrowers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  <% @borrowers.each do |borrower| %>
+    <tr>
+      <td><%= link_to borrower.name, borrower_path(borrower) %></td>
+      <td><%= link_to "View History", borrower_path(borrower) %></td>
+    </tr>
+  <% end %>
+</table>

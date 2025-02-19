@@ -1,0 +1,18 @@
+<h1>Borrowing History</h1>
+
+<table>
+  <tr>
+    <th>Book</th>
+    <th>Borrower</th>
+    <th>Borrowed At</th>
+    <th>Returned At</th>
+  </tr>
+  <% @borrowing_records.each do |record| %>
+    <tr>
+      <td><%= link_to record.book.title, book_path(record.book) %></td>
+      <td><%= link_to record.borrower.name, borrower_path(record.borrower) %></td>
+      <td><%= record.borrowed_at.strftime("%Y-%m-%d %H:%M") %></td>
+      <td><%= record.returned_at ? record.returned_at.strftime("%Y-%m-%d %H:%M") : "Not Returned" %></td>
+    </tr>
+  <% end %>
+</table>
