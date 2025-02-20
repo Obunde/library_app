@@ -5,6 +5,17 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def borrow
+    @book = Book.find(params[:id])
+    borrower = Borrower.first # Replace with current_user or actual borrower selection logic
+
+    if @book.borrow(borrower)
+      redirect_to books_path, notice: "Book borrowed successfully!"
+    else
+      redirect_to books_path, alert: "Failed to borrow book."
+    end
+  end
+  
   def show
   end
 
